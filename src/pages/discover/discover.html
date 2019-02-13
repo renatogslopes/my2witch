@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar color='twitch'>
+    <ion-item no-lines color='twitch'>
+      <ion-icon name="logo-twitch" item-left large color="light"></ion-icon>
+      <ion-searchbar (ionInput)="onSearch()" [(ngModel)]="sStreamNameInput" debounce="450" [showCancelButton]="true"
+        placeholder="Search on Twitch..">
+      </ion-searchbar>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Fake Streams.. Just to show some 'loading' -->
+  <div *ngIf="!aStreams" class="fakeStream">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-4 *ngFor="let fake of fakeStreams">
+          <ion-card>
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="">
+              </ion-avatar>
+              <h2></h2>
+              <p></p>
+            </ion-item>
+            <img src="">
+            <ion-card-content>
+              <p></p>
+            </ion-card-content>
+            <ion-row>
+              <ion-col center>
+                <ion-item>
+                  <ion-icon name="people" color='twitch' item-start></ion-icon>
+                  <p title='Watching now'></p>
+                </ion-item>
+              </ion-col>
+              <ion-col center>
+                <ion-item>
+                  <ion-icon name="eye" color='twitch' item-start></ion-icon>
+                  <p title='Total visualizations'></p>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="aStreams">
+    <ion-grid *ngIf="sStreamNameInput && aStreams.length > 0">
+      <ion-row>
+        <ion-col col-12>
+          <span class="twitchColor">
+            <ion-badge color='twitch' item-end>{{nViewValue}}</ion-badge>
+            Results of search
+          </span>
+          <button style="float:right; top:-10px" *ngIf="bViewValueChanged" title="Set value" ion-button icon-only clear
+            (click)="setViewNumber()" color="secondary">
+            <ion-icon name="md-checkmark"></ion-icon>Save
+          </button>
+          <ion-item no-lines>
+            <ion-range style="padding-top:0" color='twitch' min="1" max="100" step="1" [(ngModel)]="nViewValue"
+              (ionChange)="onChangeViewNumber()">
+              <ion-icon color='twitch' small range-left name="ios-document"></ion-icon>
+              <ion-icon color='twitch' range-right name="ios-copy"></ion-icon>
+            </ion-range>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <h1 class="twitchColor" [hidden]="sStreamNameInput">Live Streams</h1>
+      <ion-row>
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-4 *ngFor="let streams of aStreams">
+          <ion-card (click)="showStreamDetails(streams)">
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="{{streams.channel.logo}}">
+              </ion-avatar>
+              <h2>{{streams.channel.display_name}}</h2>
+              <p>{{streams.game}}</p>
+            </ion-item>
+            <img src="{{streams.preview.large}}">
+            <ion-card-content>
+              <span>{{streams.channel.status}}</span>
+            </ion-card-content>
+            <ion-row>
+              <ion-col center>
+                <ion-item>
+                  <ion-icon name="people" color='twitch' item-start></ion-icon>
+                  <p title='Watching now'>{{streams.viewers}}</p>
+                </ion-item>
+              </ion-col>
+              <ion-col center>
+                <ion-item>
+                  <ion-icon name="eye" color='twitch' item-start></ion-icon>
+                  <p title='Total visualizations'>{{streams.channel.views}}</p>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="sStreamNameInput && aStreams.length == 0">
+    <h1 class='twitchColor'>No results found for '{{sStreamNameInput}}'</h1>
+  </div>
+</ion-content>

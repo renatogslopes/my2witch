@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar class="imageBackground" [style.backgroundImage]="'url(' + aStreamDetails.channel.profile_banner + ')'">
+    <button ion-fab (click)="dismiss()" color="twitch" style="float:right">
+      <ion-icon style="font-size:40px" name="ios-close"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <iframe [src]='sStreamSrc' height="80%" width="100%" frameborder="0" scrolling="no" allowfullscreen="false">
+  </iframe>
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+        <h3 item-left style="color:#4b367c; margin: 0;">{{aStreamDetails.channel.display_name}}</h3>
+
+        <ion-item no-lines>
+          <ion-icon name="ios-game-controller-b" small center color='twitch'></ion-icon>
+          <span title='Game' style="font-size: 12px;">{{aStreamDetails.game}}</span>
+          <br>
+          <ion-icon name="people" small center color='twitch'></ion-icon>
+          <span title='Watching now' style="font-size: 12px;">{{aStreamDetails.viewers}}</span>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+        <span style="font-size: 16px">{{aStreamDetails.channel.status}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

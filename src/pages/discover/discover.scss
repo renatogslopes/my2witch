@@ -1,0 +1,14 @@
+page-discover {
+    .twitchColor {
+        color:#4b367c;
+      }
+    .fakeStream {
+        h2, p {
+          background-color: lightgrey;
+          opacity: 0.5;
+          height: 1em;
+          margin-top: 10px;
+          width: 35%;
+        }
+    }
+}

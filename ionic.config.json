@@ -1,0 +1,7 @@
+{
+  "name": "my2witch",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
