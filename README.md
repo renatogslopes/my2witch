@@ -30,18 +30,18 @@ Stream Detail Page
 ### iOS version
 
 Main Page
-![Main Page](ios1.png)
+![Main Page](ios1.png) <br>
 
 Stream Detail Page
-![Stream Detail Page](ios2.png)
+![Stream Detail Page](ios2.png)<br>
 
 ### Android version
 
 Main Page
-![Main Page](android1.png)
+![Main Page](android1.png)<br>
 
 Stream Detail Page
-![Stream Detail Page](android2.png)
+![Stream Detail Page](android2.png)<br>
 
 ### Author
 Renato Lopes 
