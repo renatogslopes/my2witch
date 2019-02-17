@@ -19,29 +19,29 @@ To build this app was used [Twitch API](https://dev.twitch.tv).
 
 ### Desktop version 
 Main Page
-(desk1.png)
+[Main Page](desk1.png)
 
 Choose the number of results
-(desk2.png)
+[Choose the number of results](desk2.png)
 
 Stream Detail Page
-(desk3.png)
+[Stream Detail Page](desk3.png)
 
 ### iOS version
 
 Main Page
-(ios1.png)
+[Main Page](ios1.png)
 
 Stream Detail Page
-(ios2.png)
+[Stream Detail Page](ios2.png)
 
 ### Android version
 
 Main Page
-(android1.png)
+[Main Page](android1.png)
 
 Stream Detail Page
-(android2.png)
+[Stream Detail Page](android2.png)
 
 ### Author
 Renato Lopes 
